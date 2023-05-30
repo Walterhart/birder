@@ -20,7 +20,7 @@ export const tweetsData = [
         replies: [
                   {
                 handle: `@Eagle ✅`,
-                profilePic: `images/Eagle.png`,
+                profilePic: `../assets/images/Eagle.png`,
                 tweetText: `Yes! Sign me up! 😎🛩`,
             },
                   {
@@ -42,7 +42,7 @@ export const tweetsData = [
         replies: [
             {
                 handle: `@Pigeon ☣️`,
-                profilePic: `../assets/images/Pigeons.jpg`,
+                profilePic: `../assets/images/Pigeon.jpg`,
                 tweetText: `No. Onviosuly not. Go get a job in BcDonald's.`,
             },
             {

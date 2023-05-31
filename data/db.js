@@ -20,7 +20,7 @@ export const tweetsData = [
         replies: [
                   {
                 handle: `@Eagle ✅`,
-                profilePic: `../assets/images/Eagle.png`,
+                profilePic: `../assets/images/Eagle.jpg`,
                 tweetText: `Yes! Sign me up! 😎🛩`,
             },
                   {

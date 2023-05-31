@@ -1,12 +1,6 @@
+// Importing the tweetsData array from "./data/db.js" and the uuidv4 function from 'https://jspm.dev/uuid'
 import { tweetsData } from "./data/db.js";
-// Selecting tweet input and tweet button elements
-const tweetInput = document.getElementById('tweet-input');
-const tweetBtn = document.getElementById('tweet-btn');
-
-// Event listener for the tweet button click
-tweetBtn.addEventListener('click', function(){
-    console.log(tweetInput.value); // Logging the value of the tweet input
-});
+import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
 
 // Event listener for click events on the document
 document.addEventListener('click', function(e){
@@ -18,6 +12,9 @@ document.addEventListener('click', function(e){
     }
     else if(e.target.dataset.reply){
         handleReplyClick(e.target.dataset.reply); // Calling handleReplyClick function if the clicked element has a 'data-reply' attribute
+    }
+    else if(e.target.id === 'tweet-btn'){
+        handleTweetBtnClick(); // Calling handleTweetBtnClick function if the clicked element has an ID of 'tweet-btn'
     }
 });
  
@@ -61,6 +58,28 @@ function handleRetweetClick(tweetId){
 function handleReplyClick(replyId){
     // Toggling the visibility of the replies section based on the reply ID
     document.getElementById(`replies-${replyId}`).classList.toggle('hidden');
+}
+
+// Function to handle the tweet button click
+function handleTweetBtnClick(){
+    const tweetInput = document.getElementById('tweet-input');
+
+    if(tweetInput.value){
+        // Adding a new tweet to the beginning of the tweetsData array
+        tweetsData.unshift({
+            handle: `@RoadRunner`,
+            profilePic: `./assets/images/mypic.png`,
+            likes: 0,
+            retweets: 0,
+            tweetText: tweetInput.value,
+            replies: [],
+            isLiked: false,
+            isRetweeted: false,
+            uuid: uuidv4() // Generating a unique ID for the new tweet using uuidv4 function
+        });
+        render(); // Rendering the updated tweet feed
+        tweetInput.value = ''; // Clearing the tweet input field
+    }
 }
 
 // Function to generate HTML for the tweet feed
